@@ -1,0 +1,8 @@
+# Ignore Ansible retry files
+*/**/*.retry
+
+# Ignore vagrant files
+.vagrant/*/**
+
+# Ignore Ansible Vault file
+# ansible/secrets.yml

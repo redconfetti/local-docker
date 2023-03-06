@@ -1,0 +1,64 @@
+# Docker
+---
+- name: Uninstall old versions of Docker
+  apt:
+    name: "{{item}}"
+    state: absent
+    update_cache: yes
+  loop:
+    - docker
+    - docker-engine
+    - docker.io
+    - containerd
+    - runc
+- name: install dependencies
+  apt:
+    name: "{{item}}"
+    state: latest
+    update_cache: yes
+  loop:
+    - ca-certificates
+    - curl
+    - gnupg
+    - lsb-release
+- name: Make APT keyrings Directory
+  file:
+    path: /etc/apt/keyrings
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+- name: Add an Apt signing key to a specific keyring file
+  ansible.builtin.apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    keyring: /etc/apt/keyrings/docker.gpg
+    state: present
+- name: add docker repository to apt
+  ansible.builtin.apt_repository:
+    repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu jammy stable"
+    state: present
+- name: Update apt-get repo and cache
+  apt:
+    update_cache: yes
+    force_apt_get: yes
+    cache_valid_time: 3600
+- name: install docker
+  apt:
+    name: "{{item}}"
+    state: latest
+    update_cache: yes
+  loop:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    - docker-buildx-plugin
+    - docker-compose-plugin
+- name: check docker is active
+  service:
+    name: docker
+    state: started
+    enabled: yes
+- name: Ensure group "docker" exists
+  ansible.builtin.group:
+    name: docker
+    state: present
