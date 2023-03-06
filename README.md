@@ -1,12 +1,11 @@
 # Local Docker
 
 Provisions one or multiple Docker Engines/Machines locally under [Virtualbox],
-with supported by [Vagrant] and [Ansible]. Developed for the purpose of learning
+with support by [Vagrant] and [Ansible]. Developed for the purpose of learning
 how to use [Docker Swarm][].
 
 - [Setup](docs/setup.md)
 - [Usage](docs/usage.md)
-- [Server](docs/server.md)
 
 [virtualbox]: https://www.virtualbox.org/wiki/VirtualBox
 [ansible]: https://docs.ansible.com/

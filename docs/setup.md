@@ -1,18 +1,8 @@
 # Setup Guide
 
-## Virtualized Development Environment
-
-To allow developers to use any operating system they wish (Windows, Mac, Linux),
-this project uses a virtual machine (VM) to host the development environment.
-This ensures that the development environment stays constistent with the
-production environment, and also eliminates the room for errors within any
-supporting documentation.
-
 ## Package Managers
 
-Setting up your development workstation is easier when you can run command line
-commands to install various software. Download and install the package manager
-listed below for your operating system.
+Download and install the package manager listed below for your operating system.
 
 * Mac OSX - Install [Homebrew](http://brew.sh/)
 * Windows - Install [Chocolatey](https://chocolatey.org/)
@@ -92,6 +82,12 @@ sudo apt-get install ansible
 
 Alternatively you can download and install Ansible from the official
 [download page](http://docs.ansible.com/ansible/intro_installation.html).
+
+## Editor Config
+
+Developers working on this code will need to download and install the
+[Editor Config plugin](http://editorconfig.org/#download) for the text editor
+you are using.
 
 ## See Usage
 

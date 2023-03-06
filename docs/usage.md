@@ -2,29 +2,26 @@
 
 ## Bring Up Docker Engines
 
-From the root directory of this repository run `vagrant up` to setup the local
-Ubuntu server configured in the Vagrantfile.
+Two Docker Engine machines are configured under the Vagrantfile.
+
+* docker
+* docker2
+
+You can bring these up independently like so:
 
 ```shell
+# bring up first Docker Engine machine
 vagrant up docker
+
+# bring up second Docker Engine machine
+vagrant up docker2
 ```
 
-## Multi Machine Setup
+These machines are configured local to your host machine on the following
+IP addresses:
 
-By default we configure only a single Docker Engine machine as the primary
-in the Vagrantfile.
-
-We've left a second Docker Engine machine configuration in this file, but
-commented out. Feel free to use this as a template to specify as many other
-machines as you wish to setup under Virtualbox.
-
-The second machine is named 'docker2' so bringing it up would require the
-command `vagrant up docker2`. Other vagrant commands will also require that you
-specify the guest machine (e.g. `vagrant status docker2`).
-
-For more information see [Vagrant Docs - Multi-Machine]
-
-[Vagrant Docs - Multi-Machine]: https://developer.hashicorp.com/vagrant/docs/multi-machine
+* docker - 192.168.50.2
+* docker2 - 192.268.50.3
 
 ## Vagrant
 
@@ -42,15 +39,16 @@ Docker Engine machine.
 * `vagrant global-status` - outputs status of all vagrant machines that exist
 * `vagrant provision` - runs the provisioning on the vagrant machine
 
-For more commands run `vagrant --help`.
+For more commands run `vagrant --help`, or see [Vagrant Docs][].
 
-## Editor Config
+[Vagrant Docs]: https://developer.hashicorp.com/vagrant/docs
 
-Developers working on this code will need to download and install the
-[Editor Config plugin](http://editorconfig.org/#download) for the text editor
-you are using.
+### Multi Machine
 
-## Accessing Command Line Interface
+Commands that refer to a Vagrant machine require that you specify the machine
+by name. For example, to remove the second machine, you would need to run
+`vagrant destroy docker2`.
 
-If your application is a command line tool, use `vagrant ssh` to log into the
-Vagrant box (virtual machine) as the `ubuntu` user.
+For more information see [Vagrant Docs - Multi-Machine]
+
+[Vagrant Docs - Multi-Machine]: https://developer.hashicorp.com/vagrant/docs/multi-machine
