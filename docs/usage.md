@@ -52,3 +52,27 @@ by name. For example, to remove the second machine, you would need to run
 For more information see [Vagrant Docs - Multi-Machine]
 
 [Vagrant Docs - Multi-Machine]: https://developer.hashicorp.com/vagrant/docs/multi-machine
+
+## Docker Contexts
+
+You do not actually need to deploy your services to a Docker Swarm running
+under Virtualbox. You can run the `docker stack deploy` command and the stack
+will deploy to your local Docker Engine provided by Docker Desktop.
+
+If you want to actually experience a multi-node swarm, then you'll need to
+setup a different [Docker Context][].
+
+```shell
+# list current contexts
+docker context list
+
+# create new context using local docker node
+docker context create docker-test \
+  --default-stack-orchestrator=swarm \
+  --docker host=tcp://192.168.50.2:2375
+
+# switch to the new context
+docker context use docker-test
+```
+
+[docker context]: https://docs.docker.com/engine/context/working-with-contexts/

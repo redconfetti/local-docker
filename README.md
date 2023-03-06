@@ -6,6 +6,7 @@ how to use [Docker Swarm][].
 
 - [Setup](docs/setup.md)
 - [Usage](docs/usage.md)
+- [Docker Swarm](docs/swarm.md)
 
 [virtualbox]: https://www.virtualbox.org/wiki/VirtualBox
 [ansible]: https://docs.ansible.com/
