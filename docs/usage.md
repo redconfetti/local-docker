@@ -62,17 +62,27 @@ will deploy to your local Docker Engine provided by Docker Desktop.
 If you want to actually experience a multi-node swarm, then you'll need to
 setup a different [Docker Context][].
 
+The Docker Engine is not exposed on a public port of the server by default.
+It's recommended that you use SSH to connect to a Docker Engine node.
+
 ```shell
 # list current contexts
 docker context list
 
+# test ssh into server and accept ECDSA key
+ssh -l vagrant -- 192.168.50.2
+
 # create new context using local docker node
-docker context create docker-test \
+docker context create vagrant-stack \
   --default-stack-orchestrator=swarm \
-  --docker host=tcp://192.168.50.2:2375
+  --docker host=ssh://vagrant@192.168.50.2
 
 # switch to the new context
-docker context use docker-test
+docker context use vagrant-stack
+
+# list docker services
+docker ps
+# should return "CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES"
 ```
 
 [docker context]: https://docs.docker.com/engine/context/working-with-contexts/
