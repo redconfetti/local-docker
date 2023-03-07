@@ -4,11 +4,11 @@
 - name: "Docker Engine"
   become: true
   hosts: all
-  # remote_user: vagrant
-  # gather_facts: false
 
   vars:
     - ansible_python_interpreter: /usr/bin/python3
+    - remote_user: vagrant
+
 
   roles:
     - { role: common, tags: common }
